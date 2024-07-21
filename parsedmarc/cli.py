@@ -856,19 +856,22 @@ def _main():
             if "aggregate_topic" in kafka_config:
                 opts.kafka_aggregate_topic = kafka_config["aggregate_topic"]
             else:
-                logger.critical("aggregate_topic setting missing from the "
+                if opts.save_aggregate:
+                    logger.critical("aggregate_topic setting missing from the "
                                 "kafka config section")
-                exit(-1)
+                    exit(-1)
             if "forensic_topic" in kafka_config:
                 opts.kafka_forensic_topic = kafka_config["forensic_topic"]
             else:
-                logger.critical("forensic_topic setting missing from the "
+                if opts.save_forensic:
+                    logger.critical("forensic_topic setting missing from the "
                                 "kafka config section")
             if "smtp_tls_topic" in kafka_config:
                 opts.kafka_smtp_tls_topic = kafka_config["smtp_tls_topic"]
             else:
-                logger.critical("forensic_topic setting missing from the "
-                                "splunk_hec config section")
+                if opts.save_smtp_tls:
+                    logger.critical("smtp_tls_topic setting missing from the "
+                                "kafka config section")
 
         if "smtp" in config.sections():
             smtp_config = config["smtp"]
