@@ -282,6 +282,7 @@ The full set of configuration options are:
     verification (not recommended)
   - `aggregate_topic` - str: The Kafka topic for aggregate reports
   - `forensic_topic` - str: The Kafka topic for forensic reports
+  - `smtp_tls_topic` - str: The Kafka topic for SMTP TLS reports
 - `smtp`
   - `host` - str: The SMTP hostname
   - `port` - int: The SMTP port (Default: `25`)
